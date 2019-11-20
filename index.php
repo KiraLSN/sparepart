@@ -1,10 +1,22 @@
 <?php 
+include('model/conexao.php'); 
+include('model/login/verifica_login.php');
 
+include('model/login/redirect.php');
+
+$useraprov = $_SESSION['aprovador'];
+
+if ($useraprov == 0){
+    header("location: index.php");
+}
+if ($useraprov == 2){
+    header("location: indices_svr.php");
+}
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" onload="selectpedidos()">
 
 <head>
     <meta charset="UTF-8">
@@ -13,17 +25,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Matriz de Skills - HHP Main</title>
+    <title>Spare Part - HOME</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/multicon.png">
+    <link rel="icon" href="./view/img/core-img/multicon.png">
     <!-- ICONE DE ATALHOS -->
-    <link rel="apple-touch-icon" href="./img/core-img/multicon.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="./img/core-img/multicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./view/img/core-img/multicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./view/img/core-img/multicon.png" type="image/x-icon" />
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="login.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="./view/css/home.css">
+    <script src="controller/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
 
@@ -66,7 +78,7 @@
 
                     <!-- Logo -->
                     <a class="nav-brand" href="index.php">
-                        <h2>Matriz de Skills - HHP Main</h2>
+                        <h2>Spare Part</h2>
                     </a>
 
                     <!-- Navbar Toggler -->
@@ -86,30 +98,23 @@
                                 <!--<li class="current-item"><a href="./index.php">Home</a></li> -->
 
 
-                                <li><a href="#">Controle de Funcionários</a>
+                                <li><a href="#">Principal</a>
                                     <ul class="dropdown">
 
-                                        <li><a href="report-diario.php">Busca Por Nome </a></li>
-                                        <li><a href="report-mensal.php">Desligados</a></li>
-                                        <li><a href="report.php">Mudança de Cargo</a></li>
+                                        <li><a href="report-diario.php">Novo Pedido </a></li>
+                                        <li><a href="report-mensal.php">Relatorio</a></li>
+
                                     </ul>
                                 </li>
                                 <li><a href="#">Ajustes</a>
                                     <ul class="dropdown">
 
-                                        <li><a href="incluir-modelo.php">Incluir Novo Modelo</a></li>
-                                        <li><a href="incluir-postos.php">Incluir Postos</a></li>
-                                        
-                                    </ul>
-                                </li>
-                                <li><a href="#">Intruções</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./blog.html">Uso do Sistema</a></li>
+                                        <li><a href="incluir-modelo.php">Alterar Cadastro</a></li>
+                                        <li><a href="incluir-postos.php">Instrucoes</a></li>
 
                                     </ul>
                                 </li>
-                                <!--<li><a href="./contact.html">Contatos</a></li>-->
-                                <!--<li><a style="color: red" href="login/sair.php">Logout</a></li>-->
+                                <li><a style="color: red" href="login/sair.php">Logout</a></li>
                             </ul>
 
 
@@ -137,7 +142,7 @@
         <!-- Background Curve -->
 
         <div class="background-curve">
-            <img class="enfeite" src="./img/core-img/curve-1.png" alt="">
+            <img class="enfeite" src="./view/img/core-img/curve-1.png" alt="">
         </div>
 
 
@@ -162,7 +167,7 @@
         <!-- Background Curve -->
 
         <div class="blog-bg-curve">
-            <img src="./img/core-img/curve-4.png">
+            <img src="./view/img/core-img/curve-4.png">
         </div>
 
 
@@ -183,20 +188,52 @@
 
                 <!-- Single Blog Post -->
 
-                <div class="single-blog-post bg-img mb-80" style="background-image: url(./img/bg-img/8.jpg);">
+                <div class="single-blog-post bg-img mb-80" style="background-image: url(view/img/bg-img/8.jpg);">
 
                     <div id="formulario" class="post-content">
-                        <form method="post" action="index2.php">
+                        <span class="post-date" id="datou"><?php echo date("d ") ."de". date(" M "). "de ". date("Y") ?></span>
+                        <h3 id="numcar">
+                            <label>Seus Pedidos</label>
+                        </h3>
+                        <form method="post">
 
-                            <h3>
-                                Informe a Matricula
-                            </h3>
-                            <input type="text" id="login" name="login" placeholder="Insira a Matricula">
 
-                            <div class="col-12">
-                                <button id="btnSend" name="btnSend" type="submit" class="btn uza-btn btn-3 mt-15">Entrar</button>
-                            </div>
                         </form>
+                        <br>
+                        <div class="pedidos" id="pedidos" onclick="selectpedidos()">
+
+                        </div>
+
+
+                        <script>
+                            var myVar;
+
+                            function selectpedidos() {
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "model/listapedidos.php",
+
+
+                                    success: function(data) {
+                                        $('#pedidos').html(data);
+                                    }
+
+                                });
+
+                            }
+
+
+                            myVar = setInterval(selectpedidos, 300);
+                            /*
+                                                            function para() {
+                                                                clearInterval(myVar);
+                                                            }
+                                                            */
+
+                        </script>
+
+
                     </div>
                 </div>
 
@@ -232,63 +269,32 @@
 
     <!-- ******* All JS Files ******* -->
     <!-- jQuery js -->
-    <script src="js/jquery.min.js"></script>
+    <script src="controller/js/jquery.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="controller/js/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="controller/js/bootstrap.min.js"></script>
     <!-- All js -->
-    <script src="js/uza.bundle.js"></script>
+    <script src="controller/js/uza.bundle.js"></script>
     <!-- Active js -->
-    <script src="js/default-assets/active.js"></script>
+    <script src="controller/js/default-assets/active.js"></script>
 
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/vendor/jquery-ui.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="controller/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="controller/js/vendor/jquery-ui.js"></script>
+    <script src="controller/js/vendor/bootstrap.min.js"></script>
 
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/contact-form.js"></script>
-    <script src="js/ajaxchimp.js"></script>
-    <script src="js/scrollUp.min.js"></script>
-    <script src="js/magnific-popup.min.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="controller/js/owl.carousel.min.js"></script>
+    <script src="controller/js/contact-form.js"></script>
+    <script src="controller/js/ajaxchimp.js"></script>
+    <script src="controller/js/scrollUp.min.js"></script>
+    <script src="controller/js/magnific-popup.min.js"></script>
+    <script src="controller/js/wow.min.js"></script>
 
-    <script src="js/main.js"></script>
-    <script src="js/check.js"></script>
+    <script src="controller/js/main.js"></script>
+    <script src="controller/js/check.js"></script>
 
     <script>
         document.getElementById("datou").value = new Date().getFullYear();
-
-
-
-
-        function ler() {
-            var qrcode = document.getElementById("qr").value;
-            setTimeout(escrever, 1000);
-        }
-
-        function escrever() {
-            var qrcode = document.getElementById("qr").value;
-            document.getElementById("teste").value = qrcode;
-            document.getElementById("numcar").innerHTML = "<label>Check List Carro " + qrcode + "<label/> ";
-            document.getElementById("qrcode").value = qrcode;
-            document.getElementById("qr").style.display = "none";
-            document.getElementById("img-qr").style.display = "none";
-
-
-            if (qrcode != null) {
-                document.getElementById("formulario").style.display = "block";
-
-
-            } else {
-                document.getElementById("formulario").style.display = "none";
-
-            }
-
-            if (qrcode == null) {
-                document.getElementById("formulario").style.display = "none";
-            }
-        }
 
     </script>
 

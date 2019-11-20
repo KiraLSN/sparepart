@@ -50,13 +50,13 @@ Last Update: Dec 31, 2018
 --------------------------------------------- */
 /* Import Fonts & All CSS */
 @import url(fonts/aileron-font-style.css);
-@import url(css/bootstrap.min.css);
-@import url(css/animate.css);
-@import url(css/default-assets/classy-nav.css);
-@import url(css/owl.carousel.min.css);
-@import url(css/magnific-popup.css);
-@import url(css/font-awesome.min.css);
-@import url(css/style.css);
+@import url(bootstrap.min.css);
+@import url(animate.css);
+@import url(default-assets/classy-nav.css);
+@import url(owl.carousel.min.css);
+@import url(magnific-popup.css);
+@import url(font-awesome.min.css);
+@import url(style.css);
 /* :: 1.0 Reboot CSS */
 
 table {
@@ -2187,8 +2187,8 @@ input:focus {
 }
 
 @media only screen and (min-width: 1366px) and (max-width: 1926px) {
-    
-    
+
+
     .single-blog-post {
         position: relative;
         z-index: 1;
@@ -2215,15 +2215,16 @@ input:focus {
     h2 {
         font-size: 40px;
     }
-    
-    
+
+
 
 }
 
 
-table{
+table {
     width: 800px;
 }
+
 .single-blog-post {
     position: relative;
     z-index: 1;

@@ -5,9 +5,20 @@
  */
 
 
+/* Define o limite de tempo da sessão em 60 minutos */
+session_cache_expire(60);
+
+// Inicia a sessão
+session_start();
+
 // Variável que verifica se o usuário está logado
+if ( ! isset( $_SESSION['logado'] ) ) {
+    $_SESSION['logado'] = false;
+    
+}
 
 // Erro do login
+$_SESSION['login_erro'] = false;
 
 /**
  * PDO - Conexão com a base de dados - Aula 28
@@ -15,23 +26,14 @@
  */
  
 // Variáveis da conexão
-session_cache_expire(60);
-session_start();
 
-if ( ! isset( $_SESSION['logado'] ) ) {
-    $_SESSION['logado'] = false;
-    
-}
 
-$_SESSION['login_erro'] = false;
-
-$base_dados  = 'skill_db';
+$base_dados  = 'spare_db';
 $usuario_bd  = 'root';
 $senha_bd    = '';
 $host_db     = 'localhost';
 $charset_db  = 'UTF8';
-$conexao_pdo = null; 
-$dsn_Options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+$conexao_pdo = null;
 
 // Concatenação das variáveis para detalhes da classe PDO
 $detalhes_pdo  = 'mysql:host=' . $host_db . ';';

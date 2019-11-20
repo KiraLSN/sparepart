@@ -50,13 +50,13 @@ Last Update: Dec 31, 2018
 --------------------------------------------- */
 /* Import Fonts & All CSS */
 @import url(fonts/aileron-font-style.css);
-@import url(css/bootstrap.min.css);
-@import url(css/animate.css);
-@import url(css/default-assets/classy-nav.css);
-@import url(css/owl.carousel.min.css);
-@import url(css/magnific-popup.css);
-@import url(css/font-awesome.min.css);
-@import url(css/style.css);
+@import url(bootstrap.min.css);
+@import url(animate.css);
+@import url(default-assets/classy-nav.css);
+@import url(owl.carousel.min.css);
+@import url(magnific-popup.css);
+@import url(font-awesome.min.css);
+@import url(style.css);
 /* :: 1.0 Reboot CSS */
 
 table {
@@ -82,7 +82,7 @@ td {
 }
 
 .table {
-    width: 1300px;
+    width: 130px;
     text-align: center;
 
 
@@ -101,17 +101,17 @@ td {
 
 }
 
-.adicionar{
+.adicionar {
     width: 350px;
     position: absolute;
     left: 40px;
 }
 
-.addbtn{
+.addbtn {
     position: absolute;
     left: 200px;
     top: -20px;
-    width: 100px; 
+    width: 100px;
 }
 
 
@@ -2199,7 +2199,7 @@ input:focus {
     z-index: -1;
 }
 
-@media only screen and (min-width: 1366px) and (max-width: 1926px) {
+@media only screen and (min-width: 1365px) and (max-width: 1926px) {
     .single-blog-post {
         position: relative;
         z-index: 1;
@@ -2210,60 +2210,62 @@ input:focus {
         width: 720px;
         left: 250px;
         text-align: left;
-        
+
     }
-    
+
     .single-blog-post .post-content .post-date {
         text-align: left;
-        
+
     }
 
-    input {
-        text-align: center;
-        font-size: 20px;
-        width: 200px;
-    }
-    
-    .checkbox{
-        width: 50px;
-        height: 30px;
-    }
+
+
 
     h3 {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     h2 {
         font-size: 40px;
     }
-    
-    table{
+
+    .table {
+        width: 400px;
+        font-size: 12px;
+    }
+
+    table {
         width: 500px;
     }
-    
-    td, tr {
-        font-size: 22px;
-        width: 50px;
-        height: 30px;
+
+    td {
+        font-size: 12px;
     }
-    
-    .btn{
+
+    td,
+    tr {
+        font-size: 12px;
+        width: 40px;
+        height: 10px;
+    }
+
+    .btn {
         text-align: left;
         width: 200px;
         position: relative;
         left: -60px;
     }
-    
-    .edit{
+
+    .edit {
         font-size: 10px;
         color: blue;
     }
 
 }
 
- table{
-        width: 650px;
-    }
+table {
+    width: 650px;
+}
 
 
 
@@ -2281,28 +2283,29 @@ input:focus {
     text-align: center;
 }
 
-.btn{
-        text-align: left;
-        width: 190px;
+.btn {
+    text-align: left;
+    width: 190px;
     font-size: 13px;
-        position: relative;
-        left: -90px;
-    }
+    position: relative;
+    left: -90px;
+}
 
 input {
     text-align: center;
 }
 
-.checkbox{
+.checkbox {
     width: 30px;
     height: 30px;
 }
 
-td, tr {
-        font-size: 22px;
-        width: 50px;
-        height: 30px;
-    }
+td,
+tr {
+    font-size: 22px;
+    width: 50px;
+    height: 30px;
+}
 
 
 .single-blog-post .post-content {
