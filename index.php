@@ -5,14 +5,15 @@ include('model/login/verifica_login.php');
 include('model/login/redirect.php');
 
 $useraprov = $_SESSION['aprovador'];
-
+$nome = $_SESSION['nome'];
+/*
 if ($useraprov == 0){
     header("location: index.php");
 }
 if ($useraprov == 2){
     header("location: indices_svr.php");
 }
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +79,7 @@ if ($useraprov == 2){
 
                     <!-- Logo -->
                     <a class="nav-brand" href="index.php">
-                        <h2>Spare Part</h2>
+                        <h2><?php echo $nome ?></h2>
                     </a>
 
                     <!-- Navbar Toggler -->
@@ -114,7 +115,7 @@ if ($useraprov == 2){
 
                                     </ul>
                                 </li>
-                                <li><a style="color: red" href="login/sair.php">Logout</a></li>
+                                <li><a style="color: red" href="model/login/sair.php">Logout</a></li>
                             </ul>
 
 

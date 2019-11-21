@@ -22,8 +22,8 @@ session_start();
     <link rel="shortcut icon" href="./img/core-img/multicon.png" type="image/x-icon" />
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="login.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="../view/css/login.css">
+    <script src="../controller/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
 
@@ -45,7 +45,7 @@ session_start();
                         <!-- Close Button -->
                         <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
                         <!-- Form -->
-                        <form action="index.php" method="post">
+                        <form action="../index.php" method="post">
                             <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
                             <button type="submit">Search</button>
                         </form>
@@ -66,11 +66,11 @@ session_start();
 
                     <!-- Logo -->
                     <a class="nav-brand" href="index.php">
-                        <h2>Matriz de Skills - Login</h2>
+                        <h2>Spare Part - Login</h2>
                     </a>
 
                     <!-- Navbar Toggler -->
-                  
+
                     <!-- Menu -->
                     <div class="classy-menu">
                         <!-- Menu Close Button -->
@@ -79,7 +79,7 @@ session_start();
                         </div>
 
                         <!-- Nav Start -->
-                        
+
 
 
                         <!-- Nav End -->
@@ -150,30 +150,39 @@ session_start();
                 <div class="single-blog-post bg-img mb-80" style="background-image: url(./img/bg-img/8.jpg);">
 
                     <div id="formulario" class="post-content">
-                        <form method="post" action="login.php">
+                        <form method="post" action="../index.php">
 
                             <h3 id="indio">
-                                Senha de Acesso
+                                Informe Login e Senha
                             </h3>
-                            <input type="password" id="password" name="password" placeholder="Informe Senha" autofocus>
+                            <div>
+
+                                <input type="text" id="login" name="mysingle1" placeholder="Informe Login" autofocus>
+
+                            </div>
+                            <br>
+                            <div>
+                                <input type="password" id="senha" name="senha" placeholder="Informe Senha">
+
+                            </div>
+
 
                             <div class="col-12">
                                 <button id="btnSend" name="btnSend" type="submit" onclick="Login()" class="btn uza-btn btn-3 mt-15">Entrar</button>
                             </div>
+
+                            <?php if ( ! empty( $_SESSION['login_erro'] ) ) :?>
+                            <tr>
+                                <td style="color: red;">
+                                    <?php echo $_SESSION['login_erro'];?>
+                                </td>
+                                <?php $_SESSION['login_erro'] = ''; ?>
+                            </tr>
+                            <?php endif; ?>
+
                         </form>
                     </div>
                 </div>
-
-<?php
-                if(isset($_POST['btnSend'])){
-                    $senha = "admin";
-                    $pw = $_POST['password'];
-                    if($senha == $pw){
-                        echo "<script>location.href='index.php'; </script>";
-                    }
-                }
-                
-                ?>
             </div>
         </div>
 
@@ -205,31 +214,31 @@ session_start();
 
     <!-- ******* All JS Files ******* -->
     <!-- jQuery js -->
-    <script src="js/jquery.min.js"></script>
+    <script src="../controller/js/jquery.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="../controller/js/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../controller/js/bootstrap.min.js"></script>
     <!-- All js -->
-    <script src="js/uza.bundle.js"></script>
+    <script src="../controller/js/uza.bundle.js"></script>
     <!-- Active js -->
-    <script src="js/default-assets/active.js"></script>
+    <script src="../controller/js/default-assets/active.js"></script>
 
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/vendor/jquery-ui.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="../controller/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../controller/js/vendor/jquery-ui.js"></script>
+    <script src="../controller/js/vendor/bootstrap.min.js"></script>
 
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/contact-form.js"></script>
-    <script src="js/ajaxchimp.js"></script>
-    <script src="js/scrollUp.min.js"></script>
-    <script src="js/magnific-popup.min.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="../controller/js/owl.carousel.min.js"></script>
+    <script src="../controller/js/contact-form.js"></script>
+    <script src="../controller/js/ajaxchimp.js"></script>
+    <script src="../controller/js/scrollUp.min.js"></script>
+    <script src="../controller/js/magnific-popup.min.js"></script>
+    <script src="../controller/js/wow.min.js"></script>
 
-    <script src="js/main.js"></script>
-    <script src="js/check.js"></script>
+    <script src="../controller/js/main.js"></script>
+    <script src="../controller/js/check.js"></script>
 
-   
+
 
 
 </body>

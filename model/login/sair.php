@@ -7,5 +7,5 @@ $_SESSION = array();
 session_destroy();
 
 // Redireciona para o login.php
-header("location: ../index.php");
+header("location: ../../view/login.php");
 ?>
