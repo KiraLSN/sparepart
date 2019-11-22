@@ -11,14 +11,14 @@ include('conexao.php');
         <thead>
             <tr>
 
-                <th>Identificador</th>
+                <th>Funcionario</th>
 
                 <th>Material</th>
                 <th>Qty</th>
                 <th>Localização</th>
                 <th>Status</th>
 
-                <th>Action</th>
+
             </tr>
         </thead>
 
@@ -33,7 +33,7 @@ include('conexao.php');
                      $pdo_verifica->execute();
             while($fetch = $pdo_verifica->fetch()){
                 	echo '<tr>';
-			echo '<td>' . $fetch['tipo_id'] . '</td>';
+			echo '<td>' . $fetch['funcionario'] . '</td>';
 			
 			echo '<td>' . $fetch['material'] . '</td>';
 			echo '<td>' . $fetch['qty'] . '</td>';
@@ -53,14 +53,7 @@ include('conexao.php');
                 }
             echo '<td><font color='.$cor.'>' . $fetch['status'] . '</font></td>';    
             
-            if($fetch['funcionario'] == $namae){
-               echo '<td></td>';
-			     echo '</tr>';
-            }else{
-                echo '<td> <a style="color:blue;" href="?ap=' . $fetch['id_solicitacao'] .'& status=Aprovado ">Aprovar</a> </br>';
-                echo ' <a style="color:red;" href="?rp=' . $fetch['id_solicitacao'] .'& status=Reprovado "></br>Reprovar</a> </td>';
-			     echo '</tr>';
-            }  
+            
 			
               
             }
