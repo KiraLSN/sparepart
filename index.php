@@ -177,13 +177,6 @@ if ($useraprov == 2){
         <div class="container">
 
 
-            <!-- TESTE COM APP DE SCANNER INSTALADO -->
-
-
-
-
-
-
 
             <div class="row">
 
@@ -202,7 +195,6 @@ if ($useraprov == 2){
                         </form>
                         <br>
                         <div class="pedidos" id="pedidos" onclick="selectpedidos()">
-
                         </div>
 
 
