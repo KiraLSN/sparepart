@@ -102,7 +102,7 @@ if ($useraprov == 2){
                                 <li><a href="#">Principal</a>
                                     <ul class="dropdown">
 
-                                        <li><a href="report-diario.php">Novo Pedido </a></li>
+                                        <li><a href="view/new-request.php">Novo Pedido </a></li>
                                         <li><a href="report-mensal.php">Relatorio</a></li>
 
                                     </ul>
