@@ -78,7 +78,7 @@ if ($useraprov == 2){
                 <nav class="classy-navbar justify-content-between" id="uzaNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.php">
+                    <a class="nav-brand" href="../index.php">
                         <h2><?php echo $nome ?></h2>
                     </a>
 
@@ -102,7 +102,7 @@ if ($useraprov == 2){
                                 <li><a href="#">Principal</a>
                                     <ul class="dropdown">
 
-                                        <li><a href="report-diario.php">Novo Pedido </a></li>
+                                        <li><a href="view/new-request.php">Novo Pedido </a></li>
                                         <li><a href="report-mensal.php">Relatorio</a></li>
 
                                     </ul>
@@ -189,82 +189,154 @@ if ($useraprov == 2){
                         <h3 id="numcar">
                             <label>Nova Requisicao</label>
                         </h3>
-                        <form method="post">
+                        <form method="post" action="../model/sendNewRequest.php">
+
+                            <p class="branco">Tipo de Solicitação</p><select name="tiposol" class="form-control">
+                                <option>Solicitação de novo item sem a peça física</option>
+                                <option>Solicitação de material para Setup.</option>
+                                <option>Solicitação de item sem retorno ao spare part. </option>
+                                <option>Devolução de item para o S/part [GR] </option>
+
+
+                            </select>
+
+
+                            <p class="branco">Tipo de Identificador</p><select name="list2" class="form-control">
+                                <option>Input</option>
+                                <option>Prensa.</option>
+                                <option>Calibração</option>
+                                <option>LCIA</option>
+                                <option>Radiação</option>
+                                <option>Printer</option>
+                                <option>Bateria</option>
+                                <option>IMEI</option>
+                                <option>Audio Test</option>
+                                <option>Kitting</option>
+                                <option>Outros</option>
+
+
+                            </select>
 
 
 
+                            <div class="form-group">
+                                <input type="checkbox" class="checkbx" name="check" value="Retorno" />
 
+                                <p class="brancobx">Com Retorno</p><br>
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" class="form-control" name="material" placeholder="Material" autocomplete="on" required />
+                            </div>
+                            <br>
+                            <div>
+                                <input type="number" class="form-control" name="qty" placeholder="Quantidade" required />
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" class="form-control" name="linha" placeholder="Linha/Setor" required />
+
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" class="form-control" name="motivo" placeholder="Motivo" required />
+                            </div>
+                            <br>
+
+                            <?php
+                
+                if ($useraprov == 1){
+                    
+               
+                        echo '<p hidden class="branco">Aprovador / MySingleID</p><select  name="aprovador" class="form-control hidden">';
+                            echo '<option hidden value='.$_SESSION['nome'].'> </option>';
+                    
+                                     
+
+
+                        echo '</select>';
+         
+                }else{
+                  
+                        echo '<p class="branco">Aprovador / MySingleID</p><select name="aprovador" class="form-control" required>';
+                            echo '<option value=""> </option>';
+                                     
+                    $pdo_verifica = $conexao_pdo->prepare('SELECT nome FROM usuarios WHERE aprovador = 1');
+		$pdo_verifica->execute();
+                    
+                    while( $fetch = $pdo_verifica->fetch() ) {
+			echo '<option>' . $fetch['nome'] . '</option>';
+                        echo '</br>';
+                    }
+                    
+
+
+                        echo '</select>';
+                    echo '</div>';
+                echo '</div>';
+                }
+                
+                
+                            ?>
+
+                            <button type="submit" name="btnCadastrar" id="form-submit" class="btn uza-btn btn-3 mt-15">Submit</button>
 
                         </form>
                         <br>
 
 
+                        <!-- ***** Blog Area End ***** -->
 
 
 
-                    </div>
-                </div>
+                        <!-- ***** Footer Area Start ***** -->
+                        <footer class="footer-area section-padding-80-0">
+                            <div class="container">
 
+                                <div class="row" style="margin-bottom: 30px;">
 
-            </div>
-        </div>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>
+                                        document.write(new Date().getFullYear());
 
+                                    </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </div>
 
+                            </div>
+                        </footer>
+                        <!-- ***** Footer Area End ***** -->
 
+                        <!-- ******* All JS Files ******* -->
+                        <!-- jQuery js -->
+                        <script src="../controller/js/jquery.min.js"></script>
+                        <!-- Popper js -->
+                        <script src="../controller/js/popper.min.js"></script>
+                        <!-- Bootstrap js -->
+                        <script src="../controller/js/bootstrap.min.js"></script>
+                        <!-- All js -->
+                        <script src="../controller/js/uza.bundle.js"></script>
+                        <!-- Active js -->
+                        <script src="../controller/js/default-assets/active.js"></script>
 
-    </section>
-    <!-- ***** Blog Area End ***** -->
+                        <script src="../controller/js/vendor/jquery-1.12.4.min.js"></script>
+                        <script src="../controller/js/vendor/jquery-ui.js"></script>
+                        <script src="../controller/js/vendor/bootstrap.min.js"></script>
 
+                        <script src="../controller/js/owl.carousel.min.js"></script>
+                        <script src="../controller/js/contact-form.js"></script>
+                        <script src="../controller/js/ajaxchimp.js"></script>
+                        <script src="../controller/js/scrollUp.min.js"></script>
+                        <script src="../controller/js/magnific-popup.min.js"></script>
+                        <script src="../controller/js/wow.min.js"></script>
 
+                        <script src="../controller/js/main.js"></script>
+                        <script src="../controller/js/check.js"></script>
 
-    <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-area section-padding-80-0">
-        <div class="container">
+                        <script>
+                            document.getElementById("datou").value = new Date().getFullYear();
 
-            <div class="row" style="margin-bottom: 30px;">
-
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>
-                    document.write(new Date().getFullYear());
-
-                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
-
-        </div>
-    </footer>
-    <!-- ***** Footer Area End ***** -->
-
-    <!-- ******* All JS Files ******* -->
-    <!-- jQuery js -->
-    <script src="../controller/js/jquery.min.js"></script>
-    <!-- Popper js -->
-    <script src="../controller/js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="../controller/js/bootstrap.min.js"></script>
-    <!-- All js -->
-    <script src="../controller/js/uza.bundle.js"></script>
-    <!-- Active js -->
-    <script src="../controller/js/default-assets/active.js"></script>
-
-    <script src="../controller/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="../controller/js/vendor/jquery-ui.js"></script>
-    <script src="../controller/js/vendor/bootstrap.min.js"></script>
-
-    <script src="../controller/js/owl.carousel.min.js"></script>
-    <script src="../controller/js/contact-form.js"></script>
-    <script src="../controller/js/ajaxchimp.js"></script>
-    <script src="../controller/js/scrollUp.min.js"></script>
-    <script src="../controller/js/magnific-popup.min.js"></script>
-    <script src="../controller/js/wow.min.js"></script>
-
-    <script src="../controller/js/main.js"></script>
-    <script src="../controller/js/check.js"></script>
-
-    <script>
-        document.getElementById("datou").value = new Date().getFullYear();
-
-    </script>
+                        </script>
 
 
 </body>
