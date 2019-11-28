@@ -6,14 +6,28 @@ include('model/login/redirect.php');
 
 $useraprov = $_SESSION['aprovador'];
 $nome = $_SESSION['nome'];
-/*
-if ($useraprov == 0){
-    header("location: index.php");
+
+if ($useraprov == 1){
+    header("location: view/superview.php");
 }
 if ($useraprov == 2){
-    header("location: indices_svr.php");
+    header("location: view/atendimento.php");
 }
-*/
+
+
+
+ if ( isset( $_GET['rp'] ) ) {
+	// Delete de cara (sem confirmação)
+                   
+	$pdo_insere = $conexao_pdo->prepare("DELETE FROM solicitacao_materiais WHERE id_solicitacao=? ");
+	$pdo_insere->execute( array( (int)$_GET['rp'] ));
+    
+    //echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=indices_adm.php'>";
+	
+	// Redireciona para o index.php
+	//header('location: index.php');
+}
+
 ?>
 
 <!DOCTYPE html>
