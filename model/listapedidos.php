@@ -1,6 +1,6 @@
 <?php
 include('conexao.php');
-
+include('login/verifica_login.php');
 ?>
 
 
@@ -17,6 +17,7 @@ include('conexao.php');
                 <th>Qty</th>
                 <th>Localização</th>
                 <th>Status</th>
+                <th>Cancelar</th>
 
 
             </tr>
@@ -27,9 +28,10 @@ include('conexao.php');
            $user= $_SESSION['mysingle1'];
                     
                     //$namae= $_SESSION['nome'];
-            $namae = "Luciano Soares Nunes";
+            $namae = $_SESSION['nome'];
+            
             $stat= "Pendente";
-            $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, tipo_id, retorno, material, qty, line, status, data_ent, funcionario from solicitacao_materiais WHERE (aprovador = '$user' and status = '$stat') or (funcionario = '$namae' and status = 'Aprovado') or (funcionario = '$namae' and status = 'Disponivel') order by data_ent DESC");
+            $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, tipo_id, retorno, material, qty, line, status, data_ent, funcionario from solicitacao_materiais WHERE (funcionario = '$namae' and status = '$stat') or (funcionario = '$namae' and status = 'Aprovado') or (funcionario = '$namae' and status = 'Disponivel') order by data_ent DESC");
                      $pdo_verifica->execute();
             while($fetch = $pdo_verifica->fetch()){
                 	echo '<tr>';
@@ -51,7 +53,8 @@ include('conexao.php');
                         }
                     }
                 }
-            echo '<td><font color='.$cor.'>' . $fetch['status'] . '</font></td>';    
+            echo '<td><font color='.$cor.'>' . $fetch['status'] . '</font></td>';
+                echo ' <td> <a href="?rp='.$fetch['id_solicitacao'].'"><img src="view/img/lixeira.png" style="width: 30px"></a></td>';
             
             
 			
@@ -66,7 +69,7 @@ include('conexao.php');
 	$pdo_insere->execute( array($_GET['status'], (int)$_GET['ap'] ));
     
     
-	echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=indices_adm.php'>";
+	//echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=indices_adm.php'>";
 
 	// Redireciona para o index.php
 	//header('location: index.php');
@@ -75,10 +78,10 @@ include('conexao.php');
         if ( isset( $_GET['rp'] ) ) {
 	// Delete de cara (sem confirmação)
                    
-	$pdo_insere = $conexao_pdo->prepare("UPDATE solicitacao_materiais SET status=? WHERE id_solicitacao=? ");
-	$pdo_insere->execute( array($_GET['status'], (int)$_GET['rp'] ));
+	$pdo_insere = $conexao_pdo->prepare("DELETE FROM solicitacao_materiais WHERE id_solicitacao=? ");
+	$pdo_insere->execute( array( (int)$_GET['rp'] ));
     
-    echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=indices_adm.php'>";
+    //echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=indices_adm.php'>";
 	
 	// Redireciona para o index.php
 	//header('location: index.php');
