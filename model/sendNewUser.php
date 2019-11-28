@@ -66,7 +66,7 @@ if(isset($_POST['servidor'])){
 <?php
             } else {
 			$pdo_insere = $conexao_pdo->prepare('INSERT INTO usuarios (mysingle, senha, matricula, aprovador, nome, cargo, gen) VALUES (?, ?, ?, ?, ?, ?, ?)');
-			$pdo_insere->execute( array($mysingle, crypt( "spr", $senha ), $matricula, $aprovador, $nome, $cargo, $gen ) );
+			$pdo_insere->execute( array($mysingle, crypt( $senha, "spr" ), $matricula, $aprovador, $nome, $cargo, $gen ) );
             
             header("Location: ../view/good.php");
            
