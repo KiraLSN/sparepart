@@ -2,7 +2,7 @@
 include('../model/conexao.php'); 
 include('../model/login/verifica_login.php');
 
-include('../model/login/redirect.php');
+//include('../model/login/redirect.php');
 
 $useraprov = $_SESSION['aprovador'];
 $nome = $_SESSION['nome'];
@@ -232,60 +232,65 @@ if ($useraprov == 2){
 
 
                         <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-                        <!-- ***** Blog Area End ***** -->
+    <!-- ***** Blog Area End ***** -->
 
 
 
-                        <!-- ***** Footer Area Start ***** -->
-                        <footer class="footer-area section-padding-80-0">
-                            <div class="container">
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="footer-area section-padding-80-0">
+        <div class="container">
 
-                                <div class="row" style="margin-bottom: 30px;">
+            <div class="row" style="margin-bottom: 30px;">
 
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>
-                                        document.write(new Date().getFullYear());
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>
+                    document.write(new Date().getFullYear());
 
-                                    </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </div>
+                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
 
-                            </div>
-                        </footer>
-                        <!-- ***** Footer Area End ***** -->
+        </div>
+    </footer>
+    <!-- ***** Footer Area End ***** -->
 
-                        <!-- ******* All JS Files ******* -->
-                        <!-- jQuery js -->
-                        <script src="../controller/js/jquery.min.js"></script>
-                        <!-- Popper js -->
-                        <script src="../controller/js/popper.min.js"></script>
-                        <!-- Bootstrap js -->
-                        <script src="../controller/js/bootstrap.min.js"></script>
-                        <!-- All js -->
-                        <script src="../controller/js/uza.bundle.js"></script>
-                        <!-- Active js -->
-                        <script src="../controller/js/default-assets/active.js"></script>
+    <!-- ******* All JS Files ******* -->
+    <!-- jQuery js -->
+    <script src="../controller/js/jquery.min.js"></script>
+    <!-- Popper js -->
+    <script src="../controller/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../controller/js/bootstrap.min.js"></script>
+    <!-- All js -->
+    <script src="../controller/js/uza.bundle.js"></script>
+    <!-- Active js -->
+    <script src="../controller/js/default-assets/active.js"></script>
 
-                        <script src="../controller/js/vendor/jquery-1.12.4.min.js"></script>
-                        <script src="../controller/js/vendor/jquery-ui.js"></script>
-                        <script src="../controller/js/vendor/bootstrap.min.js"></script>
+    <script src="../controller/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../controller/js/vendor/jquery-ui.js"></script>
+    <script src="../controller/js/vendor/bootstrap.min.js"></script>
 
-                        <script src="../controller/js/owl.carousel.min.js"></script>
-                        <script src="../controller/js/contact-form.js"></script>
-                        <script src="../controller/js/ajaxchimp.js"></script>
-                        <script src="../controller/js/scrollUp.min.js"></script>
-                        <script src="../controller/js/magnific-popup.min.js"></script>
-                        <script src="../controller/js/wow.min.js"></script>
+    <script src="../controller/js/owl.carousel.min.js"></script>
+    <script src="../controller/js/contact-form.js"></script>
+    <script src="../controller/js/ajaxchimp.js"></script>
+    <script src="../controller/js/scrollUp.min.js"></script>
+    <script src="../controller/js/magnific-popup.min.js"></script>
+    <script src="../controller/js/wow.min.js"></script>
 
-                        <script src="../controller/js/main.js"></script>
-                        <script src="../controller/js/check.js"></script>
+    <script src="../controller/js/main.js"></script>
+    <script src="../controller/js/check.js"></script>
 
-                        <script>
-                            document.getElementById("datou").value = new Date().getFullYear();
+    <script>
+        document.getElementById("datou").value = new Date().getFullYear();
 
-                        </script>
+    </script>
 
 
 </body>
