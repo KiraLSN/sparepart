@@ -183,7 +183,7 @@ if ($useraprov == 2){
                             <label>Cadastro de Novo Usuário</label>
                         </h3>
 
-                        <form action="../model/sendNewUser.php" method="post">
+                        <form id="form" name="form" action="../model/sendNewUser.php" method="post">
 
 
 
@@ -193,7 +193,11 @@ if ($useraprov == 2){
 
                             <br>
 
-                            <div><input type="password" name="senha" placeholder="Senha" class="form-control" required></div>
+                              <div><input type="password" name="senha1" id="senha1" placeholder="Senha" class="form-control" onkeypress="limitText(this.form.senha1, this.form.countdown, 100)" onkeyup="limitText(this.form.senha1, this.form.countdown, 100)" required></div>
+                            <br>
+                            
+                            <div><input type="password" name="senha" id="senha" placeholder="Redigite a Senha" class="form-control" onkeyup="same()"  required></div>
+                            <p id="alert" style=" color: red"></p>
 
                             <br>
 
@@ -224,7 +228,7 @@ if ($useraprov == 2){
                             </tr>
                             <?php endif; ?>
                             <div>
-                                <input type="submit" value="Cadastrar" name="btnCadastrar" id="form-submit" class="btn uza-btn btn-3 mt-15">
+                                <input type="submit" value="Cadastrar" name="btnCadastrar" onclick="send(form)" id="form-submit" class="btn uza-btn btn-3 mt-15">
                             </div>
 
 
@@ -263,6 +267,35 @@ if ($useraprov == 2){
 
     <!-- ******* All JS Files ******* -->
     <!-- jQuery js -->
+    
+    <script language="javascript" type="text/javascript">
+        function limitText(limitField, limitCount, limitNum) {
+            if (limitField.value.length > limitNum) {
+                limitField.value = limitField.value.substring(0, limitNum);
+            } else {
+                limitCount.value = limitNum - limitField.value.length;
+            }
+        }
+
+        function send(form) {
+            if (form.limitedtextarea.value.length >= 5) {
+                form.submit();
+            } else {
+                alert("Digite o minimo")
+            }
+        }
+        function same(){
+            senha1 = document.getElementById("senha1").value;
+            senha2 = document.getElementById("senha").value;
+            if(senha1 != senha2){
+                document.getElementById("alert").innerHTML = "Senha não confere.";
+            }else{
+                document.getElementById("alert").innerHTML = "";
+            }
+        }
+
+    </script>
+    
     <script src="../controller/js/jquery.min.js"></script>
     <!-- Popper js -->
     <script src="../controller/js/popper.min.js"></script>
