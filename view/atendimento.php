@@ -28,11 +28,19 @@ if ($useraprov == 1){
 	// Redireciona para o index.php
 	//header('location: index.php');
 }
+
+ if ( isset( $_GET['fim'] ) ) {
+     $mat=$_GET["fim"];
+    $pdo_insere = $conexao_pdo->prepare("UPDATE solicitacao_materiais SET status='Entregue' WHERE matricula='$mat' and status='Disponivel'");
+	$pdo_insere->execute();
+$mat="";
+    echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=goodend.php'>";
+ }
                 
 ?>
 
 <!DOCTYPE html>
-<html lang="en" onload="selectpedidos()">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -55,7 +63,7 @@ if ($useraprov == 1){
 
 </head>
 
-<body>
+<body onload="selectpedidos()">
     <!-- Preloader -->
     <div id="preloader">
         <div class="wrapper">
@@ -202,16 +210,19 @@ if ($useraprov == 1){
 
                     <div id="formulario" class="post-content">
                         <span class="post-date" id="datou"><?php echo date("d ") ."de". date(" M "). "de ". date("Y") ?></span>
+
+
+                        <input type="text" class="form-control" name="autenticar" id="autenticar" placeholder="Matricula/GEN" onkeyup="selectpedidos()" autofocus>
+
                         <h3 id="numcar">
                             <label>Solicitacoes realizadas</label>
                         </h3>
-                        <form method="post">
 
-
-                        </form>
                         <br>
+
                         <div class="pedidos" id="pedidos" onclick="selectpedidos()">
                         </div>
+
 
 
                         <script>
@@ -222,6 +233,9 @@ if ($useraprov == 1){
                                 $.ajax({
                                     type: "POST",
                                     url: "../model/atendimentoLista.php",
+                                    data: {
+                                        autenticar: document.getElementById('autenticar').value
+                                    },
 
 
                                     success: function(data) {
@@ -233,7 +247,7 @@ if ($useraprov == 1){
                             }
 
 
-                            myVar = setInterval(selectpedidos, 300);
+                            myVar = setInterval(selectpedidos, 5000);
                             /*
                                                             function para() {
                                                                 clearInterval(myVar);
