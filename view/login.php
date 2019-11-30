@@ -6,6 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
+    
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="uza - Model Agency HTML5 Template">
@@ -13,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Matriz de Skills - Login</title>
+    <title>Spare Part - Login</title>
 
     <!-- Favicon -->
     <link rel="icon" href="./img/core-img/multicon.png">
