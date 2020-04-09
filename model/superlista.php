@@ -25,22 +25,22 @@ include('login/verifica_login.php');
 
         <tbody>
             <?php
-           $user= $_SESSION['mysingle1'];
+            $user= $_SESSION['mysingle1'];
                     
                     //$namae= $_SESSION['nome'];
             $namae = $_SESSION['nome'];
             
             $stat= "Pendente";
-            $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, tipo_id, retorno, material, qty, line, status, data_ent, funcionario from solicitacao_materiais WHERE (aprovador = '$user' and status = '$stat') or (funcionario = '$namae' and status = 'Aprovado') or (funcionario = '$namae' and status = 'Disponivel') order by data_ent DESC");
-                     $pdo_verifica->execute();
+            $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, tipo_id, retorno, material, qty, line, status, data_ent, funcionario from solicitacao_materiais WHERE (aprovador = '$namae' and status = '$stat') or (funcionario = '$namae' and status = 'Aprovado') or (funcionario = '$namae' and status = 'Disponivel') order by data_ent DESC");
+            $pdo_verifica->execute();
             while($fetch = $pdo_verifica->fetch()){
-                	echo '<tr>';
-			echo '<td>' . $fetch['funcionario'] . '</td>';
+                echo '<tr>';
+			    echo '<td>' . $fetch['funcionario'] . '</td>';
 			
-			echo '<td>' . $fetch['material'] . '</td>';
-			echo '<td>' . $fetch['qty'] . '</td>';
-            echo '<td>' . $fetch['line'] . '</td>';
-             if ($fetch['status']=="Aprovado"){
+			    echo '<td>' . $fetch['material'] . '</td>';
+			    echo '<td>' . $fetch['qty'] . '</td>';
+                echo '<td>' . $fetch['line'] . '</td>';
+                if ($fetch['status']=="Aprovado"){
                     $cor = "green";
                 }else{
                     if ($fetch['status']=="Disponivel"){
