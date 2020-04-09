@@ -102,7 +102,7 @@ if ($useraprov == 2){
                                 <li><a href="#">Principal</a>
                                     <ul class="dropdown">
 
-                                        <li><a href="view/new-request.php">Novo Pedido </a></li>
+                                        <li><a href="../index.php">Home</a></li>
                                         <li><a href="report-mensal.php">Relatorio</a></li>
 
                                     </ul>
@@ -247,7 +247,7 @@ if ($useraprov == 2){
                 
                 if ($useraprov == 1){
                     
-               
+                        echo '<div hidden>';
                         echo '<p hidden class="branco">Aprovador / MySingleID</p><select  name="aprovador" class="form-control hidden">';
                             echo '<option hidden value='.$_SESSION['nome'].'> </option>';
                     
@@ -255,6 +255,7 @@ if ($useraprov == 2){
 
 
                         echo '</select>';
+                        echo '</div>';
          
                 }else{
                   
@@ -266,7 +267,7 @@ if ($useraprov == 2){
                     
                     while( $fetch = $pdo_verifica->fetch() ) {
 			echo '<option>' . $fetch['nome'] . '</option>';
-                        echo '</br>';
+                        
                     }
                     
 
@@ -281,6 +282,9 @@ if ($useraprov == 2){
 
                             <button type="submit" name="btnCadastrar" id="form-submit" class="btn uza-btn btn-3 mt-15">Submit</button>
 
+                        </form>
+                        <form method="post" action="../index.php">
+                            <button type="submit" name="btnCancelar" id="form-cancel" class="btn uza-btn btn-3 mt-15">Cancel</button>
                         </form>
                         <br>
 
