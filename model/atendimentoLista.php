@@ -39,7 +39,7 @@ include('conexao.php');
             while($fetch = $pdo_verifica->fetch()){
                 	echo '<tr>';
 			
-			echo '<td>' . $fetch['funcionario'] . '</td>';
+			echo '<td>' . $fetch['funcionario'] . ' <p style="font-size: 8px">'.$fetch['matricula'].'</p></td>';
 			echo '<td>' . $fetch['line'] . '</td>';
 			echo '<td>' . $fetch['material'] . '</td>';
                 
@@ -80,11 +80,11 @@ include('conexao.php');
                 
             }else{
                 $stat= "Pendente";
-            $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, tipo_id, retorno, material, qty, line, motivo, status, data_ent, funcionario from solicitacao_materiais WHERE (status = '$stat' or status = 'Disponivel') order by status ASC, data_ent DESC");
+            $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, tipo_id, retorno, material, qty, line, motivo, status, data_ent, funcionario, matricula from solicitacao_materiais WHERE (status = '$stat' or status = 'Disponivel' or STATUS = 'Aprovado') order by status ASC, data_ent DESC");
                      $pdo_verifica->execute();
             while($fetch = $pdo_verifica->fetch()){
                 	echo '<tr>';
-			echo '<td>' . $fetch['funcionario'] . '</td>';
+			echo '<td>' . $fetch['funcionario'] . '<p style="font-size: 8px">'.$fetch['matricula'].'</p></td>';
 			echo '<td>' . $fetch['line'] . '</td>';
 			echo '<td>' . $fetch['material'] . '</td>';
                 
