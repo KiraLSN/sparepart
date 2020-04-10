@@ -2212,6 +2212,7 @@ input:focus {
         text-align: left;
         height: auto;
         max-height: 400px;
+        top: -100px;
 
     }
 
