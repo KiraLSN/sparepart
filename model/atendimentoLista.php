@@ -28,29 +28,23 @@ include('conexao.php');
     function spawnNotification(opcoes) {
 
 
-        var n = new Notification('Nova Solicitação', opcoes.opt);
+        var n = new Notification(opcoes.title, opcoes.opt);
+        n.onclick = function() {
+            window.open("http://localhost/sparepart");
+            notification.close();
+        }
 
-    }
+        var audio = new Audio('../view/audio/midna.mp3');
+        audio.addEventListener('canplaythrough', function() {
+            audio.play();
+        });
 
-    document.getElementById("btn_push").onclick = evt => {
-        spawnNotification({
-            opt: {
-                body: "Gostas do meu corpo",
-                icon: "../view/img/bell.png",
-                vibrate: [200, 100, 200],
-                data: 'I like peas.'
-
-            },
-            title: "Novo Pedido",
-            link: "www.google.com",
-
-        })
     }
 
 </script>
-
+<!--
 <button type="button" id="btn_push">Push Notification</button>
-
+-->
 <button id="btn_permissao">PERMITIR NOTIFICACAO</button>
 <form method="post" class="form-table" name="list_adm">
 
@@ -201,14 +195,15 @@ include('conexao.php');
             <script>
                 spawnNotification({
                     opt: {
-                        body: "Gostas do meu corpo",
-                        icon: "../view/img/bell.png",
+
+                        icon: "../view/img/submarine.gif",
                         vibrate: [200, 100, 200],
                         data: 'I like peas.'
 
                     },
-                    title: "Novo Pedido",
-                    link: "www.google.com",
+                    title: "Novo Pedido detectado",
+                    body: "Gostas do meu corpo",
+                    link: "http://localhost/sparepart/index.php",
 
                 })
 
