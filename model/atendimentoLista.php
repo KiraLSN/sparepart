@@ -78,7 +78,12 @@ include('conexao.php');
         $mat=$_POST["autenticar"];
                  $pdo_verifica = $conexao_pdo->prepare("select id_solicitacao, retorno, material, qty, line, motivo, status, data_ent, funcionario, matricula, aprovador from solicitacao_materiais WHERE (matricula='$mat' and status = 'Disponivel') or (matricula='$mat' and status = 'Aprovado') or (gen='$mat' and status = 'Disponivel') or (gen='$mat' and status = 'Aprovado') order by status ASC, data_ent DESC");
                      $pdo_verifica->execute();
+                $notifica = 0;
             while($fetch = $pdo_verifica->fetch()){
+                
+                 if($notifica < $fetch['id_solicitacao']){
+                    $notifica = $fetch['id_solicitacao'];
+                }
                 	echo '<tr>';
 			
 			echo '<td>' . $fetch['funcionario'] . ' <p style="font-size: 8px">'.$fetch['matricula'].'</p></td>';
@@ -173,16 +178,16 @@ include('conexao.php');
             }
             
             $contnotify = 0;
-            $pdo_verifica = $conexao_pdo->prepare("select notifica from notifica WHERE (notifica = '$notifica') ");
+            $pdo_verifica = $conexao_pdo->prepare("select notifica from notifica WHERE (notifica >= '$notifica') ");
                      $pdo_verifica->execute();
             while($fetch = $pdo_verifica->fetch()){
                 $contnotify = $contnotify + 1;
-                echo $notifica;
+                //echo $notifica;
                 
             }
             
-            if($contnotify == 1){
-                echo "Tudo Certo";
+            if($contnotify > 0){
+                //echo "Tudo Certo";
             }else{
                 try{
     $pdo_insere = $conexao_pdo->prepare('UPDATE notifica SET notifica='.$notifica.' WHERE id="notifica"');
@@ -198,12 +203,12 @@ include('conexao.php');
 
                         icon: "../view/img/submarine.gif",
                         vibrate: [200, 100, 200],
-                        data: 'I like peas.'
+                        data: 'Dados'
 
                     },
-                    title: "Novo Pedido detectado",
-                    body: "Gostas do meu corpo",
-                    link: "http://localhost/sparepart/index.php",
+                    title: "Você tem nova Solicitação",
+                    body: "Solicitação Simples",
+                    link: "http://105.112.244.57/spareproject/index.php",
 
                 })
 
